@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 示例</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var myData = {
+            a: 1
+        }
+        var app = new Vue({
+            el: '#app',
+            data: myData
+        })
+        console.log(app.a)
+
+        app.a = 2;
+        console.log(myData.a);
+
+        myData.a = 3;
+        console.log(app.a);
+    </script>
+</body>
+
+</html>
