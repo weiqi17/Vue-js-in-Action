@@ -9,18 +9,18 @@
 <body>
     <div id="app">
         <child-component>
-            <p>分发的内容</p>
-            <p>更多分发的内容</p>
+            <template scope="props">
+                <p>来自父组件的内容</p>
+                <p>{{props.msg}}</p>
+            </template>
         </child-component>
     </div>
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <script>
         Vue.component('child-component', {
             template: '\
-            <div>\
-                <slot>\
-                    <p>如果父组件没有插入内容，我将作为默认出现</p>\
-                </slot>\
+            <div clsss="container">\
+                <slot msg="来自子组件的内容"></slot>\
             </div>',
         });
 

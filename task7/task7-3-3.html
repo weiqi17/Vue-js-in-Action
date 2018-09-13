@@ -10,20 +10,16 @@
     <div id="app">
         <p>总数：{{total}}</p>
         <my-component v-model="total"></my-component>
+        <button @click="handleReduce">-1</button>
     </div>
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <script>
         Vue.component('my-component', {
-            template: '<button @click="handleClick">+1</button>',
-            data: function () {
-                return {
-                    counter: 0
-                }
-            },
+            props: ['value'],
+            template: '<input :value="value" @input="updateValue">',
             methods: {
-                handleClick: function () {
-                    this.counter++;
-                    this.$emit('input', this.counter);
+                updateValue: function (event) {
+                    this.$emit('input', event.target.value);
                 }
             }
         });
@@ -32,6 +28,11 @@
             el: '#app',
             data: {
                 total: 0
+            },
+            methods: {
+                handleReduce: function () {
+                    this.total--;
+                }
             }
         })
     </script>
