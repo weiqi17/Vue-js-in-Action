@@ -12,16 +12,16 @@
     </div>
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <script>
-        Vue.directive('test', {
-            bind: function (el, binding, vnode) {
-                console.log(binding.value.msg);
-                console.log(binding.value.name);
-            }
-        });
+    Vue.directive('test', {
+        bind: function(el, binding, vnode) {
+            console.log(binding.value.msg);
+            console.log(binding.value.name);
+        }
+    });
 
-        var app = new Vue({
-            el: '#app',
-        })
+    var app = new Vue({
+        el: '#app',
+    })
     </script>
 </body>
 

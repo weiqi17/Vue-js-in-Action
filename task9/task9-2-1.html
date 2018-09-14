@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 示例</title>
+</head>
+
+<body>
+    <div id="app">
+        <anthor :level="2" title="特性">特性</anthor>
+        <anthor :level="3" title="Render函数">Render函数</anthor>
+        <anthor :level="4" title="什么是Render函数">什么是Render函数</anthor>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+    Vue.component('anthor', {
+        props: {
+            level: {
+                type: Number,
+                required: true
+            },
+            title: {
+                type: String,
+                default: ''
+            }
+        },
+        render: function(createElement) {
+            return createElement(
+                'h' + this.level, [
+                    createElement(
+                        'a', {
+                            domProps: {
+                                href: '#' + this.title
+                            }
+                        },
+                        this.$slots.default
+                    )
+                ]
+            )
+        }
+    })
+    var app = new Vue({
+        el: '#app',
+    })
+    </script>
+</body>
+
+</html>
