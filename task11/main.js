@@ -1,6 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Vuex from 'vuex';
 import App from './app.vue';
+import VueBus from './vue-bus';
+
+Vue.use(VueRouter);
+Vue.use(Vuex);
+Vue.use(VueBus);
 
 const Routers = [{
         path: '/index',
@@ -38,11 +44,24 @@ router.beforeEach((to, from, next) => {
     next();
 });
 
-Vue.use(VueRouter);
+const store = new Vuex.Store({
+    state: {
+        count: 0
+    },
+    mutations: {
+        increment(state) {
+            state.count++;
+        },
+        decrease(state) {
+            state.count--;
+        }
+    }
+});
 
 new Vue({
     el: '#app',
     router: router,
+    store: store,
     render: h => {
         return h(App)
     }
